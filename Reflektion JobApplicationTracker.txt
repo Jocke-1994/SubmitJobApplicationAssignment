@@ -1,0 +1,7 @@
+1. Hur hjälpte LINQ dig att skriva renare kod?
+LINQ är väldigt bra för att man typ inte skriver kod, tex ".Where" har en faktisk funktion.
+sen underlättar det genom att man inte skriver lika mycket kod, dvs, det ersätter mycket längre kodsträng. ersätter tex if satser.
+
+
+2. Vilken del av projektet var mest utmanande, och hur löste du den?
+-sortering & filtreringen var helt klart jobbigast. Jag löste det efter vääääldigt många försök och bolla med AI. Är väldigt tacksam att jag inte behövt commita efter varje försök, det hade dränkt commit historiken. 
