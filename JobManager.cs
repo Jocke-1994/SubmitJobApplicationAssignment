@@ -8,8 +8,7 @@ namespace SubmitJobApplicationAssignment
 {
     public class JobManager
     {
-        public class JobManager
-        {
+    
             public static List<JobApplication> ListOfApplications { get; set; } = new List<JobApplication>();
 
             public JobManager()
@@ -279,4 +278,3 @@ namespace SubmitJobApplicationAssignment
             }
         }
     }
-}
