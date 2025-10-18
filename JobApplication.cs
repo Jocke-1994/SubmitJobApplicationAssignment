@@ -38,10 +38,10 @@ namespace SubmitJobApplicationAssignment
             PositionTitle = positionTitle;
             SalaryExpectation = salary;
             ApplicationDate = date;
-            Status = status; // standardvärde
+            Status = status; // standardvärde sätts till "Applied"
         }
 
-        public int GetDaysSinceApplied() //GetDaysSinceApplied() – returnerar antal dagar sedan ansökan skickades.
+        public int GetDaysSinceApplied() // antal dagar sedan ansökan skickades.
         {
             if (ApplicationDate == default) return -1; // eller kasta exception beroende på krav
 
