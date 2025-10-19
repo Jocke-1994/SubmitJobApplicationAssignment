@@ -22,7 +22,7 @@ namespace SubmitJobApplicationAssignment
             }
 
 
-            //AddJob() //– lägger till en ny ansökan 
+            //– lägger till en ny ansökan 
             public static void AddJob()
             {
                 Console.WriteLine("Vad heter företaget?");
@@ -40,8 +40,7 @@ namespace SubmitJobApplicationAssignment
 
                 Console.WriteLine($"Jobbet på {CompanyName} som {PositionTitle} har lagts till i listan.");
             }
-
-            //ShowAll() //– visar alla ansökningar
+        
             public static void ShowAllApplications()
             {
                 var apps = JobManager.ListOfApplications;
@@ -57,16 +56,14 @@ namespace SubmitJobApplicationAssignment
                 {
                     var app = apps[i];
 
-                    // index och företag och position
                     Console.Write($"{i + 1}. Företag: {app.CompanyName}. Roll: {app.PositionTitle}. Ansökningsdatum: {app.ApplicationDate:yyyy-MM-dd}. Status: ");
-
-                    // metod som färgar status
+                    
                     PrintStatusColored(app.Status);
 
                     Console.WriteLine();
                 }
             }
-            //ShowByStatus() //– filtrerar med LINQ efter status(VG del)
+            
             public static void SortByStatus()
             {
                 Console.WriteLine("Vilken status vill du visa överst?");
@@ -77,16 +74,16 @@ namespace SubmitJobApplicationAssignment
 
                 string choice = Console.ReadLine();
 
-                if (!int.TryParse(choice, out int statusChoice) || statusChoice < 1 || statusChoice > 4)
+                if (!int.TryParse(choice, out int statusChoice) || statusChoice < 1 || statusChoice > 4) //Försöker konvertera till ett heltal. Om det lyckas, sparas talet i variabeln statusChoice, annars typ "hej blir den false.
                 {
                     Console.WriteLine("Ogiltigt val.");
 
                 }
 
-                // Konvertera valet (1–4) till enum-värdet
+                // Konvertera valet till enum-värdet
                 ApplicationStatus selectedStatus = (ApplicationStatus)(statusChoice - 1);
 
-                // Sortera: först de med vald status, sen resten
+                // Sortering först de med vald status, sen resten
                 var sorted = JobManager.ListOfApplications
                     .OrderByDescending(app => app.Status == selectedStatus)
                     .ThenBy(app => app.CompanyName)
@@ -173,7 +170,7 @@ namespace SubmitJobApplicationAssignment
 
                 Console.WriteLine($"Genomsnittlig svarstid: {averageResponseTime:F1} dagar");
             }
-            //UpdateStatus() //– ändrar status på en befintlig ansökan
+            // ändrar status på en befintlig ansökan
             public static void UpdateStatus()
             {
                 if (ListOfApplications.Count == 0)
@@ -182,14 +179,13 @@ namespace SubmitJobApplicationAssignment
 
                 }
 
-                // 1. Lista alla jobb
+                
                 for (int i = 0; i < ListOfApplications.Count; i++)
                 {
                     var app = ListOfApplications[i];
                     Console.WriteLine($"{i + 1}. {app.CompanyName} - {app.PositionTitle} ({app.Status})");
                 }
 
-                // 2. Välj jobb
                 Console.Write("Ange numret på jobbet du vill uppdatera: ");
                 int index = Convert.ToInt32(Console.ReadLine()) - 1;
 
@@ -201,18 +197,15 @@ namespace SubmitJobApplicationAssignment
 
                 var selectedJob = ListOfApplications[index];
 
-                // 3. Lista statusalternativ
                 Console.WriteLine("Välj ny status:");
                 foreach (var s in Enum.GetValues(typeof(ApplicationStatus)))
                 {
                     Console.WriteLine($"{(int)s} - {s}");
                 }
 
-                // 4. Uppdatera
                 int newStatus = Convert.ToInt32(Console.ReadLine());
                 selectedJob.Status = (ApplicationStatus)newStatus;
 
-                // 5. Bekräftelse
                 Console.WriteLine($"Status för {selectedJob.PositionTitle} hos {selectedJob.CompanyName} uppdaterades till {selectedJob.Status}.");
             }
             public static void RemoveApplication()
