@@ -15,5 +15,5 @@ Ta bort en ansökan (om tex blivit nekad jobbet)
 
 Du kör programmet genom att köra filen "SubmitJobApplicationAssignment\bin\Debug\net9.0\SubmitJobApplicationAssignment.exe".
 
-Joakim Rehn
+Jocke
 2025/10/17
